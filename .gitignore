@@ -1,0 +1,29 @@
+# Bytecode
+__pycache__/
+*.py[cod]
+
+
+# Virtual environments
+venv/
+.env/
+
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+
+# IDE/editor files
+.vscode/
+*.swp
+*.sublime-project
+*.sublime-workspace
+
+
+# Image folders 
+photos/
+sorted/
+
+
+# Log or debug files
+*.log
