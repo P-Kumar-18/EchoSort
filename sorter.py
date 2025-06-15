@@ -20,11 +20,16 @@ def date_and_time(date_time):
     return date, time
 
 
-def EchoSort(date, filePath, fileName):
-    target_folder = os.path.join("sorted", date)
-    os.makedirs(target_folder, exist_ok = True)
-    destination = os.path.join(target_folder, fileName)
-    shutil.move(filePath, destination)
+def EchoSort(date, filePath, fileName, log_file):
+    try:
+        os.makedirs("sorted", exist_ok = True)
+        target_folder = os.path.join("sorted", date)
+        os.makedirs(target_folder, exist_ok = True)
+        destination = os.path.join(target_folder, fileName)
+        shutil.move(filePath, destination)
+        log_file.write(f"Moved: {filePath} -> {destination}\n")
+    except Exception as e:
+        log_file.write(f"Erorr: {filePath} -> {e}\n")
 
 
 def get_photos(photo_folder):

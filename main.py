@@ -4,11 +4,25 @@ from sorter import get_date_time, date_and_time, get_photos, EchoSort
 def main():
     photos_folder = "photos"
     photos = get_photos(photos_folder)
-
-    for fileName, filePath in photos:
-        date_time = get_date_time(filePath)
-        date, time = date_and_time(date_time)
-        EchoSort(date, filePath, fileName)
+    moved = 0
+    skipped = 0
+    failed = 0
+    with open("log.txt", "w", encoding="utf-8") as log_file:
+        for fileName, filePath in photos:
+            date_time = get_date_time(filePath)
+            if date_time:
+                try:
+                    date, time = date_and_time(date_time)
+                    EchoSort(date, filePath, fileName, log_file)
+                    moved += 1
+                except Exception as e:
+                    log_file.write(f"Error parsing data for {filePath}: {e}\n")
+                    failed += 1
+            else:
+                log_file.write(f"Skipped no EXIF data for {filePath}\n")
+                skipped += 1
+        log_file.write("\n---Summary---\n")
+        log_file.write(f"Total photos processeed: {len(photos)}\nMoved: {moved}\nSkipped (No Exif Data): {skipped}\nFailed (Error while processing): {failed}")
 
 
 if __name__ == "__main__":
