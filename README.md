@@ -14,11 +14,13 @@ Photo sorting into folders by date taken (e.g., sorted/2025-06-14/)
 
 ✅ Cross-platform.. safe using os. path. join
 
+🖱️ Simple GUI for selecting folders (Tkinter-based)
+
 🛠️ Requirements
 
 Python 3.x
 
-Pillow # for more advanced usage, you can also use convert+composite.
+Pillow
 
 piexif
 
