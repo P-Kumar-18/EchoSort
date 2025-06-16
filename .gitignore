@@ -29,3 +29,4 @@ sorted/*
 
 # Log or debug files
 *.log
+log.txt

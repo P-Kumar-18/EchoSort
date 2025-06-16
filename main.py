@@ -21,10 +21,10 @@ def main():
                         log_file.write(f"Error parsing data for {filePath}: {e}\n")
                         failed += 1
                 else:
-                    log_file.write(f"Skipped no EXIF data for {filePath}\n")
+                    log_file.write(f"Skipped no modified time for {filePath}\n")
                     skipped += 1
             log_file.write("\n---Summary---\n")
-            log_file.write(f"Total photos processeed: {len(photos)}\nMoved: {moved}\nSkipped (No Exif Data): {skipped}\nFailed (Error while processing): {failed}")
+            log_file.write(f"Total photos processeed: {len(photos)}\nMoved: {moved}\nSkipped (Could not read modified time): {skipped}\nFailed (Error while processing): {failed}")
     else:
         print("No folder Selected.")
 

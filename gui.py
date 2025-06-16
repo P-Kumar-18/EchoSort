@@ -31,6 +31,7 @@ def app():
     confirm_btn = tkinter.Button(window, text = "Start Sorting", command = window.quit, state = "disabled")
     confirm_btn.grid(column = 1, row = 2, padx = 20, pady = 10)
 
+    window.resizable(False, False)
     window.mainloop()
 
     return folder_selected

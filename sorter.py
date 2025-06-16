@@ -1,22 +1,20 @@
-from PIL import Image
-import piexif
+import datetime
 import os
 import shutil
 
 
 def get_date_time(filePath):
     try:
-        img = Image.open(filePath)
-        exif_data = piexif.load(img.info["exif"])
-        date_time = exif_data["Exif"][piexif.ExifIFD.DateTimeOriginal].decode()
-        return date_time
+        date_time = os.path.getmtime(filePath)
+        date_time = datetime.datetime.fromtimestamp(date_time)
+        return date_time.strftime("%d-%m-%Y %H-%M-%S")
     except Exception as e:
         print(f"Error reading {filePath}: {e}")
         return None
     
 
 def date_and_time(date_time):
-    date, time = date_time.replace(":", "-").split(" ")
+    date, time = date_time.split(" ")
     return date, time
 
 
