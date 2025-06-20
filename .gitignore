@@ -1,17 +1,18 @@
-# Bytecode
+# Byte-compiled / cached
 __pycache__/
 *.py[cod]
-
+*.pyo
 
 # Virtual environments
+.venv/
 venv/
 .env/
-
+ENV/
 
 # OS junk
 .DS_Store
 Thumbs.db
-
+desktop.ini
 
 # IDE/editor files
 .vscode/
@@ -19,14 +20,21 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 
+# Build output (PyInstaller)
+build/
+dist/
+*.spec
+*.exe
 
-# Image folders 
-photos/*
-!photos/.gitkeep
+# Sorted photos (ignore actual images, keep folder for structure)
 sorted/*
 !sorted/.gitkeep
 
-
-# Log or debug files
+# Logs
 *.log
 log.txt
+
+# Misc
+pip-log.txt
+*.bak
+*.tmp

@@ -11,23 +11,22 @@ def get_date_time(filePath):
     except Exception as e:
         print(f"Error reading {filePath}: {e}")
         return None
-    
+
 
 def date_and_time(date_time):
     date, time = date_time.split(" ")
     return date, time
 
 
-def EchoSort(date, filePath, fileName, log_file):
+def EchoSort(date, filePath, fileName, log_file, output_base):
     try:
-        os.makedirs("sorted", exist_ok = True)
-        target_folder = os.path.join("sorted", date)
-        os.makedirs(target_folder, exist_ok = True)
+        target_folder = os.path.join(output_base, "sorted", date)
+        os.makedirs(target_folder, exist_ok=True)
         destination = os.path.join(target_folder, fileName)
         shutil.move(filePath, destination)
         log_file.write(f"Moved: {filePath} -> {destination}\n")
     except Exception as e:
-        log_file.write(f"Erorr: {filePath} -> {e}\n")
+        log_file.write(f"Error: {filePath} -> {e}\n")
 
 
 def get_photos(photo_folder):
